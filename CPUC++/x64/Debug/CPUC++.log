@@ -1,0 +1,10 @@
+﻿  CPUFractalCalc.cpp
+CPUFractalCalc.cpp(119): warning #3180: unrecognized OpenMP #pragma
+    	#pragma omp parallel private(width, height, offsetX, offsetY, scale, calcIterNum)
+    	        ^
+  
+CPUFractalCalc.cpp(141): warning #3180: unrecognized OpenMP #pragma
+    		#pragma omp for
+    		        ^
+  
+     Creating library F:\Programming\Программы\C++\MandelbrotFractalCalculation\x64\Debug\CPUC++.lib and object F:\Programming\Программы\C++\MandelbrotFractalCalculation\x64\Debug\CPUC++.exp

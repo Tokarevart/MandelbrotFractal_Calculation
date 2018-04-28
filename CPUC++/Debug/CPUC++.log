@@ -1,0 +1,8 @@
+﻿  CPUFractalCalc.cpp
+f:\programming\программы\c++\mandelbrotfractalcalculation\cpuc++\cpufractalcalc.cpp(7): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+f:\programming\программы\c++\mandelbrotfractalcalculation\cpuc++\cpufractalcalc.cpp(21): warning C4244: '=': conversion from 'float' to 'char', possible loss of data
+f:\programming\программы\c++\mandelbrotfractalcalculation\cpuc++\cpufractalcalc.cpp(23): warning C4244: '=': conversion from 'float' to 'char', possible loss of data
+f:\programming\программы\c++\mandelbrotfractalcalculation\cpuc++\cpufractalcalc.cpp(45): warning C4309: '=': truncation of constant value
+     Creating library F:\Programming\Программы\C++\MandelbrotFractalCalculation\Debug\CPUC++.lib and object F:\Programming\Программы\C++\MandelbrotFractalCalculation\Debug\CPUC++.exp
+  CPUC++.vcxproj -> F:\Programming\Программы\C++\MandelbrotFractalCalculation\Debug\CPUC++.dll
+  CPUC++.vcxproj -> F:\Programming\Программы\C++\MandelbrotFractalCalculation\Debug\CPUC++.pdb (Full PDB)
