@@ -38,16 +38,16 @@ void FractalCalcOnDevice(uint8_t* colors, int* width, int* height, float* scale,
 	int index = blockIdx.x * blockDim.x + threadIdx.x;
 	int stride = blockDim.x * gridDim.x;
 
-	float mathX = 0.0;
-	float mathY = 0.0;
+	float mathX = 0.0f;
+	float mathY = 0.0f;
 
 	int y = index / _width;
 	int x = index % _width;
 	
 	while (y * _width + x < _width * _height)
 	{
-		mathX = (x - _width / 2 + _offsetX) / _scale;
-		mathY = (_height / 2 - y - _offsetY) / _scale;
+		mathX = (x - _width / 2.0f + _offsetX) / _scale;
+		mathY = (_height / 2.0f - y - _offsetY) / _scale;
 
 		//
 		// Begin with the 1-st iteration. (Not with 0-th)
@@ -115,7 +115,7 @@ void ParallelGPUFractalCalc(uint8_t* colors, int width, int height, float scale,
 	cudaMemcpy(d_calcIterNum, &calcIterNum, sizeof(int), cudaMemcpyHostToDevice);
 
 	int blockSize = 256;
-	int blocksNum = (width * height * 4 + blockSize - 1) / blockSize;
+	int blocksNum = (width * height + blockSize - 1) / blockSize;
 	FractalCalcOnDevice <<< blocksNum, blockSize >>> (d_colors, d_width, d_height, d_scale, d_offsetX, d_offsetY, d_calcIterNum);
 
 	cudaMemcpy(colors, d_colors, width * height * 4 * sizeof(uint8_t), cudaMemcpyDeviceToHost);

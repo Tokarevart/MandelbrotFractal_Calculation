@@ -6,7 +6,7 @@ using namespace std;
 
 uint8_t* g_colors = nullptr;
 int g_width = 0;
-int g_calcIterNum = 0.0f;
+int g_calcIterNum = 0;
 float invCalcIterNum = 0.0f;
 
 enum Bgra32 { B, G, R, A };
@@ -50,20 +50,20 @@ void SequentialCPUFractalCalc(uint8_t* colors, int width, int height, float scal
 		}
 	}
 
-	double mathX = 0.0;
-	double mathY = 0.0;
+	float mathX = 0.0f;
+	float mathY = 0.0f;
 
 	for (int y = 0; y < height; y++)
 		for (int x = 0; x < width; x++)
 		{
-			mathX = (x - width / 2 + offsetX) / scale;
-			mathY = (height / 2 - y - offsetY) / scale;
+			mathX = (x - width / 2.0f + offsetX) / scale;
+			mathY = (height / 2.0f - y - offsetY) / scale;
 
 			//
 			// Begin with the 1-st iteration. (Not with 0-th)
-			c = mathX + 1i * mathY;
+			c = mathX + 1if * mathY;
 			z = 0.0f;
-			zPrev = mathX + 1i * mathY;
+			zPrev = mathX + 1if * mathY;
 
 			int iter = 1;
 			while (iter < calcIterNum &&
@@ -109,7 +109,6 @@ void ParallelCPUFractalCalc(uint8_t* colors, int width, int height, float scale,
 
 	#pragma omp parallel
 	{
-
 		int _width = width;
 		int _height = height;
 		float _offsetX = offsetX;
@@ -121,21 +120,21 @@ void ParallelCPUFractalCalc(uint8_t* colors, int width, int height, float scale,
 		complex<float> z(0.0f, 0.0f);
 		complex<float> zPrev(c.real(), c.imag());
 
-		double mathX = 0.0;
-		double mathY = 0.0;
+		float mathX = 0.0f;
+		float mathY = 0.0f;
 
 		#pragma omp for
 		for (int y = 0; y < _height; ++y)
 			for (int x = 0; x < _width; x++)
 			{
-				mathX = (x - _width / 2 + _offsetX) / _scale;
-				mathY = (_height / 2 - y - _offsetY) / _scale;
+				mathX = (x - _width / 2.0f + _offsetX) / _scale;
+				mathY = (_height / 2.0f - y - _offsetY) / _scale;
 
 				//
 				// Begin with the 1-st iteration. (Not with 0-th)
-				c = mathX + 1i * mathY;
+				c = mathX + 1if * mathY;
 				z = 0.0f;
-				zPrev = mathX + 1i * mathY;
+				zPrev = mathX + 1if * mathY;
 
 				int iter = 1;
 				while (iter < _calcIterNum &&
