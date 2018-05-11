@@ -107,7 +107,7 @@ void ParallelCPUFractalCalc(uint8_t* colors, int width, int height, float scale,
 		}
 	}
 
-	#pragma omp parallel
+	#pragma omp parallel num_threads(5)
 	{
 		int _width = width;
 		int _height = height;

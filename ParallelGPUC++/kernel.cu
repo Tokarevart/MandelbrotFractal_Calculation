@@ -18,6 +18,7 @@ void PaintTheNotBelongingPoint(uint8_t* &colors, int &width, int &x, int &y, int
 		(255 - (calcIterNum - iter) * invCalcIterNum * 255.0f);
 	colors[y * width * 4 + x * 4 + 2] =
 		(255 - (calcIterNum - 0.5f * iter) * invCalcIterNum * 255.0f);
+	colors[y * width * 4 + x * 4 + 3] = 255;
 }
 
 __global__ 
